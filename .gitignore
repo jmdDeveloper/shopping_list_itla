@@ -1,1 +1,6 @@
 Debug
+
+#to ignore some file created by DevC++
+src/*.o
+src/*.dev
+src/*.layout

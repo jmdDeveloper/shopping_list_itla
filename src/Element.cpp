@@ -13,3 +13,8 @@ Element::Element(string name): _next(NULL), _name(name)
 {
 
 }
+
+void Element::setNext(Element* element)
+{
+	_next = element;
+}

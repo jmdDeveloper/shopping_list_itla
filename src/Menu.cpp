@@ -7,13 +7,15 @@
 
 #include "Menu.h"
 #include <iostream>
+#include <cstdlib>
+#include <string>
 using namespace std;
 
 Menu::Menu()
 {
 
 }
-
+List* myList = new List(); // this is the genearl list;
 void Menu::clearScreen()
 {
 	#ifdef _WIN32
@@ -68,20 +70,55 @@ void Menu::routeAction(int option)
 void Menu::listItems()
 {
 	//TODO: Implement this
-	cout << "Implement  Menu::listItems" << endl;
-}
+	//cout << "Implement  Menu::listItems" << endl;
+	Element* i = myList->getFirst();
+	
+	if( i != NULL)
+	{// if the the list is no empty 
+		cout<<"\n       All products: "<<endl;
+		
+		for(int x =1; i!=NULL; x++ , i = i->getNext()){
+			cout<<"  "<<x<<". "<<i->getName()<<endl;
+		}
+	  cout<<endl;
+	  
+	}else
+	{// if the list is empty display this message
+		cout<<"\n    List of product empty."<<endl<<endl;
+	}	
+}//end of method listItems()
 
 void Menu::addItems()
 {
 	//TODO: Implement this
-	cout << "Implement  Menu::addItems" << endl;
-}
+	//cout << "Implement  Menu::addItems" << endl;
+	string nameProduct = "";
+	string count ="";
+	string nameProductFull = "";
+ cout<<"\n  Entry the product name add to  list: ";
+ cin>>nameProduct;
+ cout<<"\n  Entry the count of the product: ";
+ cin>>count;
+ nameProductFull = nameProduct+" "+count;
+	 if(nameProduct != "")
+	 {
+	 	Element* newElement = new Element(nameProductFull);
+	 	myList->add(newElement);
+     }
+ 
+}// end of method addItems()
 
 void Menu::removeItems()
 {
 	//TODO: Implement this
-	cout << "Implement  Menu::removeItems" << endl;
-}
+	//cout << "Implement  Menu::removeItems" << endl;
+	int index = NULL;
+	listItems();
+	cout<<"\n  Entry the number of product to remove: ";
+	cin>>index;
+	myList->remove(index);
+	
+}//end of method removeItems()
 
 void Menu::show()
 {

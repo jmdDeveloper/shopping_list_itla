@@ -12,7 +12,10 @@ class Element
 {
 	public:
 		Element(std::string name);
-
+        std::string getName(){ return _name;  };// return the name of the element
+        Element* getNext(){ return _next;  }// return the next element of type Element* saved in the property '_next'
+        void setNext(Element* element);// set the property '_next' 
+        
 	private:
 		Element* _next;
 		std::string _name;
